@@ -94,6 +94,55 @@ public:
 		return s.substr(start, maxLeng);
 	}
 
+	/*最长回文子串--解法三（Manacher算法）*/
+	string longestPalindrome(string s)
+	{
+		//预处理
+		string res = "$";
+		for (int i = 0; i < s.size(); ++i)
+		{
+			res += "#";
+			res += s.at(i);
+		}
+		res += "#";
+
+		int maxRight = 0;
+		int middle = 0;
+		int maxPos = 0;
+		int maxLength = 0;
+
+		vector<int> lengthArr(res.size());
+
+		for (int i = 1; i < res.size(); ++i)
+		{
+			if (i < maxRight)
+			{
+				lengthArr[i] = min(lengthArr[2 * middle - i], maxRight - i);
+			}
+			else
+			{
+				lengthArr[i] = 1;
+			}
+
+			while (res[i - lengthArr[i]] == res[i + lengthArr[i]])
+				lengthArr[i]++;
+
+			if (maxRight < i + lengthArr[i])
+			{
+				middle = i;
+				maxRight = i + lengthArr[i];
+			}
+
+			if (maxLength < lengthArr[i])
+			{
+				maxLength = lengthArr[i];
+				maxPos = i;
+			}
+		}
+
+		return s.substr((maxPos - maxLength + 1) / 2, maxLength - 1);
+	}
+
 };
 
 #if 0
