@@ -50,7 +50,7 @@ public:
 		return count;
 	}
 };
-
+/*
 int main()
 {
 	string str = "pwwhew";
@@ -59,3 +59,4 @@ int main()
 	system("pause");
 	return 0;
 }
+*/

@@ -112,7 +112,7 @@ public:
 		return (max(Lmax1, Lmax2) + min(Rmin1, Rmin2)) / 2.0f;
 	}
 };
-
+/*
 int main()
 {
 	vector<int> l1 = { 2,7,11,15 };
@@ -122,3 +122,4 @@ int main()
 	system("pause");
 	return 0;
 }
+*/
